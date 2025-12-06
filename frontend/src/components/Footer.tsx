@@ -5,9 +5,36 @@ const Footer: React.FC = () => {
     <footer className="bg-primary-green text-white p-4 text-center mt-auto">  
       <p>&copy; 2025 LuxHotel Events By Alioune. Tous droits réservés.</p>
       <ul className="flex justify-center space-x-4 mt-2 flex-wrap">  
-        <li><a href="#" className="hover:text-accent-gold">Facebook</a></li>
-        <li><a href="#" className="hover:text-accent-gold">Instagram</a></li>
-        <li><a href="#" className="hover:text-accent-gold">Twitter</a></li>
+        <li>
+          <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-accent-gold"
+          >
+            Facebook
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-accent-gold"
+          >
+            Instagram
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.twitter.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-accent-gold"
+          >
+            Twitter
+          </a>
+        </li>
       </ul>
     </footer>
   );

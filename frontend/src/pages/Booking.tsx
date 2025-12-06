@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const Booking: React.FC = () => {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
   const [formData, setFormData] = useState({
     checkIn: '',
     checkOut: '',
@@ -20,7 +21,7 @@ const Booking: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8000/api/bookings/', formData);
+      await axios.post(`${API_BASE_URL}/api/bookings/`, formData);
       setSuccess(true);
       setError(null);
       setFormData({ checkIn: '', checkOut: '', guests: 1, room: 'Deluxe' });
@@ -32,61 +33,68 @@ const Booking: React.FC = () => {
   };
 
   return (
-    <section className="bg-primary-green p-8 text-white">
-      <h2 className="text-4xl font-serif text-accent-gold text-center mb-8">Réserver une Chambre</h2>
-      {success && <div className="text-center text-accent-gold mb-4">Réservation envoyée avec succès !</div>}
-      {error && <div className="text-center text-red-500 mb-4">{error}</div>}
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-        <label className="block mb-4">
-          Date d'arrivée :{' '}
-          <input
-            type="date"
-            name="checkIn"
-            value={formData.checkIn}
-            onChange={handleChange}
-            className="w-full p-2 text-black rounded"
-            required
-          />
-        </label>
-        <label className="block mb-4">
-          Date de départ :{' '}
-          <input
-            type="date"
-            name="checkOut"
-            value={formData.checkOut}
-            onChange={handleChange}
-            className="w-full p-2 text-black rounded"
-            required
-          />
-        </label>
-        <label className="block mb-4">
-          Nombre de personnes :{' '}
-          <input
-            type="number"
-            name="guests"
-            value={formData.guests}
-            onChange={handleChange}
-            min="1"
-            className="w-full p-2 text-black rounded"
-            required
-          />
-        </label>
-        <label className="block mb-4">
-          Type de chambre :{' '}
-          <select
-            name="room"
-            value={formData.room}
-            onChange={handleChange}
-            className="w-full p-2 text-black rounded"
+    <section className="bg-primary-green px-4 sm:px-6 md:px-10 py-10 text-white">
+      <h2 className="text-3xl sm:text-4xl font-serif text-accent-gold text-center mb-8">
+        Réserver une Chambre
+      </h2>
+      <div className="max-w-xl mx-auto bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 shadow-lg">
+        {success && <div className="text-center text-accent-gold mb-4">Réservation envoyée avec succès !</div>}
+        {error && <div className="text-center text-red-300 mb-4">{error}</div>}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <label className="block space-y-2 text-sm font-semibold">
+            <span>Date d'arrivée</span>
+            <input
+              type="date"
+              name="checkIn"
+              value={formData.checkIn}
+              onChange={handleChange}
+              className="w-full p-3 text-black rounded-lg"
+              required
+            />
+          </label>
+          <label className="block space-y-2 text-sm font-semibold">
+            <span>Date de départ</span>
+            <input
+              type="date"
+              name="checkOut"
+              value={formData.checkOut}
+              onChange={handleChange}
+              className="w-full p-3 text-black rounded-lg"
+              required
+            />
+          </label>
+          <label className="block space-y-2 text-sm font-semibold">
+            <span>Nombre de personnes</span>
+            <input
+              type="number"
+              name="guests"
+              value={formData.guests}
+              onChange={handleChange}
+              min="1"
+              className="w-full p-3 text-black rounded-lg"
+              required
+            />
+          </label>
+          <label className="block space-y-2 text-sm font-semibold">
+            <span>Type de chambre</span>
+            <select
+              name="room"
+              value={formData.room}
+              onChange={handleChange}
+              className="w-full p-3 text-black rounded-lg"
+            >
+              <option value="Deluxe">Chambre Deluxe</option>
+              <option value="Suite">Suite Royale</option>
+            </select>
+          </label>
+          <button
+            type="submit"
+            className="w-full bg-accent-gold text-primary-green px-4 py-3 rounded-full font-bold hover:bg-yellow-300 transition-colors"
           >
-            <option value="Deluxe">Chambre Deluxe</option>
-            <option value="Suite">Suite Royale</option>
-          </select>
-        </label>
-        <button type="submit" className="bg-accent-gold text-primary-green px-4 py-2 rounded-full">
-          Réserver
-        </button>
-      </form>
+            Réserver
+          </button>
+        </form>
+      </div>
     </section>
   );
 };
