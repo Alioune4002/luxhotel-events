@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 
 const Booking: React.FC = () => {
@@ -7,11 +8,17 @@ const Booking: React.FC = () => {
     (process.env.NODE_ENV === 'production'
       ? 'https://luxhotel-backend-1-5165639c0c00.herokuapp.com'
       : 'http://localhost:8000');
+  const [searchParams] = useSearchParams();
+  const initialRoom = useMemo(
+    () => searchParams.get('room') || 'Suite Royale',
+    [searchParams],
+  );
+
   const [formData, setFormData] = useState({
     check_in: '',
     check_out: '',
     guests: 1,
-    room: 'Suite Royale',
+    room: initialRoom,
   });
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);

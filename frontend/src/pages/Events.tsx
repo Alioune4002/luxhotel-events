@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 interface Event {
@@ -53,9 +54,12 @@ const Events: React.FC = () => {
             <h3 className="text-2xl font-serif text-primary-green mt-4">{event.name}</h3>
             <p className="text-text-dark">{event.desc}</p>
             <p className="font-bold mt-2">Capacité : {event.capacity} personnes</p>
-            <button className="bg-accent-gold text-primary-green px-4 py-2 rounded-full mt-4 w-full sm:w-auto">
-              Réserver
-            </button>
+            <Link
+              to={`/reserver?room=${encodeURIComponent(event.name)}`}
+              className="bg-accent-gold text-primary-green px-4 py-2 rounded-full mt-4 w-full sm:w-auto inline-block text-center hover:bg-yellow-300 transition-colors"
+            >
+              Réserver cet espace
+            </Link>
           </div>
         ))}
       </div>
