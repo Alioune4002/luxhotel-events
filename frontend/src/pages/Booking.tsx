@@ -8,8 +8,8 @@ const Booking: React.FC = () => {
       ? 'https://luxhotel-backend-1-5165639c0c00.herokuapp.com'
       : 'http://localhost:8000');
   const [formData, setFormData] = useState({
-    checkIn: '',
-    checkOut: '',
+    check_in: '',
+    check_out: '',
     guests: 1,
     room: 'Deluxe',
   });
@@ -28,7 +28,7 @@ const Booking: React.FC = () => {
       await axios.post(`${API_BASE_URL}/api/bookings/`, formData);
       setSuccess(true);
       setError(null);
-      setFormData({ checkIn: '', checkOut: '', guests: 1, room: 'Deluxe' });
+      setFormData({ check_in: '', check_out: '', guests: 1, room: 'Deluxe' });
     } catch (error) {
       console.error(error);
       setError('Erreur lors de la réservation');
@@ -49,8 +49,8 @@ const Booking: React.FC = () => {
             <span>Date d'arrivée</span>
             <input
               type="date"
-              name="checkIn"
-              value={formData.checkIn}
+              name="check_in"
+              value={formData.check_in}
               onChange={handleChange}
               className="w-full p-3 text-black rounded-lg"
               required
@@ -60,8 +60,8 @@ const Booking: React.FC = () => {
             <span>Date de départ</span>
             <input
               type="date"
-              name="checkOut"
-              value={formData.checkOut}
+              name="check_out"
+              value={formData.check_out}
               onChange={handleChange}
               className="w-full p-3 text-black rounded-lg"
               required
