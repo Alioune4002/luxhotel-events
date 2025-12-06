@@ -16,11 +16,19 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-ton-secret-key'
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")   
+if not SECRET_KEY:
+    raise ValueError("DJANGO_SECRET_KEY is not set")
 
-DEBUG = False  
+DEBUG = os.environ.get("DJANGO_DEBUG", "0") == "1"
+ 
 
-ALLOWED_HOSTS = ['luxhotel-backend.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'luxhotel-backend.herokuapp.com',
+    'luxhotel-backend-1-5165639c0c00.herokuapp.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,6 +45,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -46,7 +55,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://luxhotel-events.vercel.app/",  
+    "https://luxhotel-events.vercel.app",  
     "http://localhost:3000",
 ]
 
