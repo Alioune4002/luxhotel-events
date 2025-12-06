@@ -14,7 +14,11 @@ const Rooms: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL ||
+    (process.env.NODE_ENV === 'production'
+      ? 'https://luxhotel-backend-1-5165639c0c00.herokuapp.com'
+      : 'http://localhost:8000');
 
   useEffect(() => {
     axios

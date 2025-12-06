@@ -10,7 +10,11 @@ const Contact: React.FC = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL ||
+    (process.env.NODE_ENV === 'production'
+      ? 'https://luxhotel-backend-1-5165639c0c00.herokuapp.com'
+      : 'http://localhost:8000');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
