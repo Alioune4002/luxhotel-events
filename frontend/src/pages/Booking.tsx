@@ -11,7 +11,7 @@ const Booking: React.FC = () => {
     check_in: '',
     check_out: '',
     guests: 1,
-    room: 'Deluxe',
+    room: 'Suite Royale',
   });
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -87,8 +87,10 @@ const Booking: React.FC = () => {
               onChange={handleChange}
               className="w-full p-3 text-black rounded-lg"
             >
-              <option value="Deluxe">Chambre Deluxe</option>
-              <option value="Suite">Suite Royale</option>
+              <option value="Suite Royale">Suite Royale</option>
+              <option value="Chambre Deluxe Jardin">Chambre Deluxe Jardin</option>
+              <option value="Loft Urbain">Loft Urbain</option>
+              <option value="Villa Patio">Villa Patio</option>
             </select>
           </label>
           <button

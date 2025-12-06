@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 interface Room {
@@ -53,9 +54,12 @@ const Rooms: React.FC = () => {
             <h3 className="text-2xl font-serif text-primary-green mt-4">{room.name}</h3>
             <p className="text-text-dark">{room.desc}</p>
             <p className="font-bold mt-2">{room.price} € / nuit</p>
-            <button className="bg-accent-gold text-primary-green px-4 py-2 rounded-full mt-4 w-full sm:w-auto">
-              Voir plus
-            </button>
+            <Link
+              to={`/reserver?room=${encodeURIComponent(room.name)}`}
+              className="bg-accent-gold text-primary-green px-4 py-2 rounded-full mt-4 w-full sm:w-auto inline-block text-center hover:bg-yellow-300 transition-colors"
+            >
+              Réserver cette chambre
+            </Link>
           </div>
         ))}
       </div>
