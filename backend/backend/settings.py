@@ -81,7 +81,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///db.sqlite3', conn_max_age=600, ssl_require=True)
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',
+        conn_max_age=600,
+        ssl_require=os.environ.get("DATABASE_SSL_REQUIRE", "0") == "1",
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [

@@ -1,0 +1,82 @@
+[
+  {
+    "model": "api.room",
+    "pk": 1,
+    "fields": {
+      "name": "Suite Royale",
+      "desc": "Suite panoramique avec salon privé, vue mer et service majordome.",
+      "price": "480.00",
+      "image_url": "https://images.unsplash.com/photo-1501117716987-c8e1ecb210af?auto=format&fit=crop&w=1200&q=80"
+    }
+  },
+  {
+    "model": "api.room",
+    "pk": 2,
+    "fields": {
+      "name": "Chambre Deluxe Jardin",
+      "desc": "Grande chambre lumineuse avec terrasse sur le jardin et literie king.",
+      "price": "260.00",
+      "image_url": "https://images.unsplash.com/photo-1505692069463-5e3405e3e7ee?auto=format&fit=crop&w=1200&q=80"
+    }
+  },
+  {
+    "model": "api.room",
+    "pk": 3,
+    "fields": {
+      "name": "Loft Urbain",
+      "desc": "Espace contemporain avec coin bureau, idéal pour séjours business.",
+      "price": "310.00",
+      "image_url": "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80"
+    }
+  },
+  {
+    "model": "api.room",
+    "pk": 4,
+    "fields": {
+      "name": "Villa Patio",
+      "desc": "Suite avec patio privatif, douche à l’italienne et salon extérieur.",
+      "price": "520.00",
+      "image_url": "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=80"
+    }
+  },
+  {
+    "model": "api.event",
+    "pk": 1,
+    "fields": {
+      "name": "Salle Grand Bal",
+      "desc": "Grand salon modulable pour mariages, galas et congrès.",
+      "capacity": 300,
+      "image_url": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
+    }
+  },
+  {
+    "model": "api.event",
+    "pk": 2,
+    "fields": {
+      "name": "Rooftop Panorama",
+      "desc": "Terrasse rooftop avec vue panoramique et bar signature.",
+      "capacity": 120,
+      "image_url": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80"
+    }
+  },
+  {
+    "model": "api.event",
+    "pk": 3,
+    "fields": {
+      "name": "Salon Boardroom",
+      "desc": "Salle de réunion premium avec écran 4K et visio.",
+      "capacity": 40,
+      "image_url": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80"
+    }
+  },
+  {
+    "model": "api.event",
+    "pk": 4,
+    "fields": {
+      "name": "Terrasse Événementielle",
+      "desc": "Espace extérieur couvert pour cocktails et lancements produits.",
+      "capacity": 80,
+      "image_url": "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80"
+    }
+  }
+]
