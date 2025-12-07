@@ -26,19 +26,30 @@ const Booking: React.FC = () => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === 'guests') {
+      setFormData({ ...formData, guests: Number(value) || 1 });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post(`${API_BASE_URL}/api/bookings/`, formData);
+      await axios.post(`${API_BASE_URL}/api/bookings/`, {
+        ...formData,
+        guests: Number(formData.guests) || 1,
+      });
       setSuccess(true);
       setError(null);
       setFormData({ check_in: '', check_out: '', guests: 1, room: 'Deluxe' });
-    } catch (error) {
-      console.error(error);
-      setError('Erreur lors de la réservation');
+    } catch (error: any) {
+      console.error('Booking error', error?.response?.data || error);
+      const serverMsg = error?.response?.data
+        ? JSON.stringify(error.response.data)
+        : 'Erreur lors de la réservation';
+      setError(serverMsg);
       setSuccess(false);
     }
   };
